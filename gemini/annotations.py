@@ -837,11 +837,12 @@ def get_gnomad_info(var, empty=GNOMAD_EMPTY):
                 ac_list = ac.split(",")
                 afs[grp] = float(ac_list[allele_num]) / float(an)
 
-            nhm = sum(map(int, info_map.get('GC_Male', '').split(",")[1:-1]))
-            nhf = sum(map(int, info_map.get('GC_Female', '').split(",")[1:-1]))
+            # nhm = sum(map(int, info_map.get('GC_Male', '').split(",")[1:-1]))
+            # nhf = sum(map(int, info_map.get('GC_Female', '').split(",")[1:-1]))
 
-            num_hets = nhm + nhf
+            # num_hets = nhm + nhf
             num_homs = int(info_map.get("Hom", -1))
+            num_hets = int(info_map.get("AC", -1)) - 2*num_homs
         
             called_chroms = int(info_map.get('AN', -1))
 
